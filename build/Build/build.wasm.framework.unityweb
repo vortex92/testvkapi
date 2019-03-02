@@ -3090,8 +3090,12 @@ Module["STATIC_BUMP"] = STATIC_BUMP;
 var tempDoublePtr = STATICTOP;
 STATICTOP += 16;
 assert(tempDoublePtr % 8 == 0);
-function _Hello() {
- window.alert("Hello, world!");
+function _InitVK() {
+ VK.init((function() {
+  window.alert("VK Inited");
+ }), (function() {
+  window.alert("VK Init Failed");
+ }), "5.92");
 }
 function _JS_Cursor_SetImage(ptr, length) {
  var binary = "";
@@ -18258,9 +18262,9 @@ Module.asmLibraryArg = {
  "invoke_vijjji": invoke_vijjji,
  "invoke_vjiiii": invoke_vjiiii,
  "invoke_vjji": invoke_vjji,
- "_Hello": _Hello,
  "_IMG_Load": _IMG_Load,
  "_IMG_Load_RW": _IMG_Load_RW,
+ "_InitVK": _InitVK,
  "_JS_Cursor_SetImage": _JS_Cursor_SetImage,
  "_JS_Cursor_SetShow": _JS_Cursor_SetShow,
  "_JS_Eval_ClearTimeout": _JS_Eval_ClearTimeout,
